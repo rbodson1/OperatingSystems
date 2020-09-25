@@ -78,3 +78,37 @@ int main()
 }
 
 https://www.geeksforgeeks.org/multiplication-of-matrix-using-threads/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define ROWS 5
+#define COLS 11
+#define FILENAME "swap.txt"
+
+int main() {
+    char m[ROWS][COLS]; // should presumably be a char array
+    int r, c;
+    FILE *f;
+
+    f = fopen(FILENAME, "r");
+    if (f == NULL) {
+        printf("Can't open %s.\n", FILENAME);
+        exit(EXIT_FAILURE);
+    }
+
+    // read in the matrix
+    for (r = 0; r < ROWS; r++)
+        for (c = 0; c < COLS; c++)
+            fscanf(f, " %c", &m[r][c]); // note the extra space
+
+    // print out the matrix
+    for (r = 0; r < ROWS; r++) {
+        for (c = 0; c < COLS; c++)
+            printf("%c", m[r][c]);
+        printf("\n");
+    }
+
+    return 0;
+}
